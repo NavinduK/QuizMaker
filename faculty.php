@@ -8,13 +8,13 @@
 	 if($_SESSION['login_user_type'] != 1){
 		header('location:home.php');
 	} ?>
-	<title>Faculty List</title>
+	<title>Quiz Makers</title>
 </head>
 <body>
 	<?php include('nav_bar.php') ?>
 	
 	<div class="container-fluid admin">
-		<div class="col-md-12 alert alert-primary">Faculty List</div>
+		<div class="col-md-12 alert alert-primary">Quiz Makers</div>
 		<button class="btn btn-primary bt-sm" id="new_faculty"><i class="fa fa-plus"></i>	Add New</button>
 		<br>
 		<br>
@@ -67,7 +67,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							
-							<h4 class="modal-title" id="myModallabel">Add New Faculty</h4>
+							<h4 class="modal-title" id="myModallabel">Add New Quiz Maker</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						</div>
 						<form id='faculty-frm'>
@@ -124,7 +124,7 @@
 						$('[name="subject"]').val(resp.subject)
 						$('[name="username"]').val(resp.username)
 						$('[name="password"]').val(resp.password)
-						$('#manage_faculty .modal-title').html('Edit Faculty')
+						$('#manage_faculty .modal-title').html('Edit Quiz Maker')
 						$('#manage_faculty').modal('show')
 
 					}

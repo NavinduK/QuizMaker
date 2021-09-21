@@ -38,7 +38,7 @@ div#main{
 }
 .admin{
     margin-top: 10px;
-    margin-left:250px;
+    /* margin-left:250px; */
     padding: 20px;
     width:82% !important;
 }

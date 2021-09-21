@@ -88,7 +88,7 @@
 		$('.select2').select2({})
 		$('#new_faculty').click(function() {
 			$('#msg').html('')
-			$('#manage_faculty .modal-title').html('Add New Faculty')
+			$('#manage_faculty .modal-title').html('Add New Quiz Maker')
 			$('#manage_faculty #faculty-frm').get(0).reset()
 			$('#manage_faculty').modal('show')
 		})
@@ -106,7 +106,7 @@
 						$('[name="subject"]').val(resp.subject)
 						$('[name="username"]').val(resp.username)
 						$('[name="password"]').val(resp.password)
-						$('#manage_faculty .modal-title').html('Edit Faculty')
+						$('#manage_faculty .modal-title').html('Edit Quiz Maker')
 						$('#manage_faculty').modal('show')
 
 					}

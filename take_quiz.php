@@ -8,7 +8,7 @@
 	<?php
 	$quiz = $conn->query("SELECT * FROM quiz_list where id =" . $_GET['id'] . " order by RAND()")->fetch_array();
 	?>
-	<title><?php echo $quiz['title'] ?> | Answer Sheet</title>
+	<title><?php echo $quiz['title'] ?> | Quiz</title>
 </head>
 
 <body>
@@ -28,7 +28,12 @@
 	<?php include('nav_bar.php') ?>
 
 	<div class="container-fluid admin">
-		<div class="col-md-12 alert alert-primary"><?php echo $quiz['title'] ?> | <?php echo $quiz['qpoints'] . ' Points Each Question' ?></div>
+		<div class="col-md-12 alert alert-primary">
+			<div class="d-flex">
+				<div><?php echo $quiz['title'] ?> | <?php echo $quiz['qpoints'] . ' Points Each Question' ?></div>
+				<div class="ml-auto" id="count">Starting..</div>
+			</div>
+		</div>
 		<br>
 		<div class="card">
 			<div class="card-body">
@@ -101,6 +106,39 @@
 		})
 
 	})
+
+	var interval;
+	let minutes = <?php echo $quiz['duration'] ?>;
+	let currentTime = new Date(new Date().toISOString().split('.')[0]);
+	let startTime = '<?php echo isset($_SESSION["startTime-$quiz[id]"]) ?>';
+	let targetTime = '';
+	if (startTime == null || startTime == '') {
+		startTime = new Date().toISOString().split('.')[0];
+		document.cookie = "startTime-<?php echo $quiz['id'] ?> = " + startTime;
+		<?php $_SESSION["startTime-$quiz[id]"] = $_COOKIE["startTime-$quiz[id]"] ?>
+		targetTime = new Date(new Date(startTime).getTime() + (minutes * 60000));
+	} else {
+		startTime = "<?php echo ($_SESSION["startTime-$quiz[id]"]) ?>";
+		targetTime = new Date(new Date(startTime).getTime() + (minutes * 60000));
+	}
+
+	if (!checkComplete()) {
+		interval = setInterval(checkComplete, 1000);
+	}
+
+	function checkComplete() {
+		if (((targetTime - currentTime) / 1000) <= 0) {
+			clearInterval(interval);
+			document.getElementById('count').innerHTML = "Time is up.."
+			alert("Time is up");
+		} else {
+			currentTime = new Date(new Date().toISOString().split('.')[0]);
+			document.getElementById('count').innerHTML = "Time Remaining: " + 
+				String(Math.floor(((targetTime - currentTime) / 1000) / 3600)).padStart(2, '0') 
+				+ ':' + String(Math.floor((((targetTime - currentTime) / 1000) / 60) % 60)).padStart(2, '0') + ':' 
+				+ String(Math.floor(((targetTime - currentTime) / 1000) % 60)).padStart(2, '0');
+		}
+	}
 </script>
 
 </html>

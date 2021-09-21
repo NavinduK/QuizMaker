@@ -50,7 +50,7 @@
 						<td>
 							<center>
 							 	<?php if($status->num_rows <= 0): ?>
-							 	<a class="btn btn-sm btn-outline-primary" href="./answer_sheet.php?id=<?php echo $row['id']?>"><i class="fa fa-pencil"></i> Take Quiz</a>
+							 	<a class="btn btn-sm btn-outline-primary" href="./take_quiz.php?id=<?php echo $row['id']?>"><i class="fa fa-pencil"></i> Take Quiz</a>
 								<?php else: ?>
 								<a class="btn btn-sm btn-outline-primary" href="./view_answer.php?id=<?php echo $row['id']?>"><i class="fa fa-eye"></i> View</a>
 							<?php endif; ?>
@@ -72,7 +72,7 @@
 		$('#table').DataTable();
 		$('#new_faculty').click(function(){
 			$('#msg').html('')
-			$('#manage_faculty .modal-title').html('Add New Faculty')
+			$('#manage_faculty .modal-title').html('Add New Quiz Maker')
 			$('#manage_faculty #faculty-frm').get(0).reset()
 			$('#manage_faculty').modal('show')
 		})
@@ -90,7 +90,7 @@
 						$('[name="subject"]').val(resp.subject)
 						$('[name="username"]').val(resp.username)
 						$('[name="password"]').val(resp.password)
-						$('#manage_faculty .modal-title').html('Edit Faculty')
+						$('#manage_faculty .modal-title').html('Edit Quiz Maker')
 						$('#manage_faculty').modal('show')
 
 					}

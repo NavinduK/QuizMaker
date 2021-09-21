@@ -14,7 +14,7 @@
     include 'nav_bar.php';
     ?>
     <div class="container-fluid admin">
-        <div class="card col-md-5 offset-2">
+        <div class="card row text-center">
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
@@ -41,7 +41,7 @@
                                     $swhere ='';
                                      if($_SESSION['login_user_type'] == 3)
                                         $swhere= ' and user_id = '.$_SESSION['login_id'].' ';
-
+                                    
                                     $taken = $conn->query("SELECT count(id) as item_count from answers where quiz_id = '".$row['id']."'  ".$swhere )->fetch_array()['item_count'];
                         ?>
                         <tr>

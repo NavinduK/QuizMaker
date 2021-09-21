@@ -5,13 +5,13 @@
 	<?php include('header.php') ?>
 	<?php include('auth.php') ?>
 	<?php include('db_connect.php') ?>
-	<title>Student List</title>
+	<title>Students</title>
 </head>
 <body>
 	<?php include('nav_bar.php') ?>
 	
 	<div class="container-fluid admin">
-		<div class="col-md-12 alert alert-primary">Student List</div>
+		<div class="col-md-12 alert alert-primary">Students</div>
 		<button class="btn btn-primary bt-sm" id="new_student"><i class="fa fa-plus"></i>	Add New</button>
 		<br>
 		<br>
